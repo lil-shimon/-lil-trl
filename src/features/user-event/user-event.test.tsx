@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen } from "@testing-library/react";
+import { UserEventComponent } from "./user-event";
 
 function UserEvent() {
     return null;
@@ -7,7 +8,7 @@ function UserEvent() {
 
 describe("UserEvent", () => {
     it('should render all the elements correctly', () => {
-        render(<UserEvent/>)
+        render(<UserEventComponent/>)
         expect(screen.getByRole('button')).toBeTruthy();
         expect(screen.getByPlaceholderText('Enter')).toBeTruthy()
     });
