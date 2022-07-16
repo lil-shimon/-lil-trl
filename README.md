@@ -99,3 +99,10 @@ componentに```data-testid```を指定する
 ```js
 expect(screen.getByTestId("react")).toBeTruthy();
 ```
+
+```placeholder```でも特定できる
+```js
+expect(screen.getByPlaceholderText("placeholder")).toBeTruthy();
+```
+
+## UserEvent テスト
