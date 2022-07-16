@@ -106,3 +106,6 @@ expect(screen.getByPlaceholderText("placeholder")).toBeTruthy();
 ```
 
 ## UserEvent テスト
+```
+src/features/userEvent/userEvent.test.tsx
+```
