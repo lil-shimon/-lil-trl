@@ -126,7 +126,17 @@ mock関数
 const mockFunc = jest.fn();
 ```
 
+関数が呼ばれているかをチェック
+```js
+expect("function").toHaveBeenCalled()
+```
+
 関数が呼ばれていないかをチェック
 ```js
 expect("function").not.toHaveBeenCalled()
+```
+
+1回関数が呼ばれているかをチェック
+```js
+expect("fucntion").toHaveBeenCalledTimes(1)
 ```

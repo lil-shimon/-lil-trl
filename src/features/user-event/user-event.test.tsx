@@ -34,6 +34,6 @@ describe("button click event", () => {
         render(<UserEventComponent outputFunc={outputFunc}/>)
         userEvent.type(screen.getByPlaceholderText('Enter'), "Hello")
         userEvent.click(screen.getByRole('button'))
-        expect(outputFunc).toHaveBeenCalled()
+        expect(outputFunc).toHaveBeenCalledTimes(1)
     })
 })
