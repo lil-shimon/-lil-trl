@@ -9,7 +9,7 @@ export const UserEventComponent: FC<Props> = ({outputFunc}) => {
     const { input, handleInput } = useUserEvent()
 
     const func = () => {
-        if (input && outputFunc) outputFunc("Hello")
+        if (input && outputFunc) outputFunc(input)
     }
 
     return (
