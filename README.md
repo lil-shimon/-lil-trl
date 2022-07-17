@@ -115,10 +115,10 @@ src/features/user-event/user-event.test.tsx
 afterEach(() => cleanup())
 ```
 
-Typingをさせる
+Typingをさせる 
 ```js
 import userEvent from "@testing-library/user-event";
-userEvent.type(elem, "text")
+await userEvent.type(elem, "text")
 ```
 
 mock関数
