@@ -21,3 +21,12 @@ describe("input onchange event", () => {
         expect(inputValue.value).toBe("Hello")
     })
 })
+
+describe("button click event", () => {
+    it("should not call output func", () => {
+        const outputFunc = jest.fn();
+        render(<UserEventComponent outputFunc={outputFunc}/>)
+        userEvent.click(screen.getByRole('button'))
+        expect(outputFunc).not.toHaveBeenCalled()
+    })
+})

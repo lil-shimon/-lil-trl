@@ -120,3 +120,13 @@ Typingをさせる
 import userEvent from "@testing-library/user-event";
 userEvent.type(elem, "text")
 ```
+
+mock関数
+```js
+const mockFunc = jest.fn();
+```
+
+関数が呼ばれていないかをチェック
+```js
+expect("function").not.toHaveBeenCalled()
+```
