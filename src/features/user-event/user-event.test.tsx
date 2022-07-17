@@ -29,4 +29,11 @@ describe("button click event", () => {
         userEvent.click(screen.getByRole('button'))
         expect(outputFunc).not.toHaveBeenCalled()
     })
+    it("should call output func", () => {
+        const outputFunc = jest.fn();
+        render(<UserEventComponent outputFunc={outputFunc}/>)
+        userEvent.type(screen.getByPlaceholderText('Enter'), "Hello")
+        userEvent.click(screen.getByRole('button'))
+        expect(outputFunc).toHaveBeenCalled()
+    })
 })
