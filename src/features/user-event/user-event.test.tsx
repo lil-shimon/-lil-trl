@@ -1,10 +1,9 @@
 import React from 'react'
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { UserEventComponent } from "./user-event";
+import userEvent from "@testing-library/user-event";
 
-function UserEvent() {
-    return null;
-}
+afterEach((() => cleanup()))
 
 describe("UserEvent", () => {
     it('should render all the elements correctly', () => {
@@ -12,4 +11,13 @@ describe("UserEvent", () => {
         expect(screen.getByRole('button')).toBeTruthy();
         expect(screen.getByPlaceholderText('Enter')).toBeTruthy()
     });
+})
+
+describe("input onchange event", () => {
+    it("should update input value correctly", () => {
+        render(<UserEventComponent/>)
+        const inputValue: HTMLInputElement = screen.getByPlaceholderText('Enter');
+        userEvent.type(inputValue, "Hello")
+        expect(inputValue.value).toBe("Hello")
+    })
 })

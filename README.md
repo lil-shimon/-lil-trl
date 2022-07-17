@@ -109,3 +109,14 @@ expect(screen.getByPlaceholderText("placeholder")).toBeTruthy();
 ```
 src/features/user-event/user-event.test.tsx
 ```
+
+テスト間副作用をなくすために、cleanupをする
+```js
+afterEach(() => cleanup())
+```
+
+Typingをさせる
+```js
+import userEvent from "@testing-library/user-event";
+userEvent.type(elem, "text")
+```
