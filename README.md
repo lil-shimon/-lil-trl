@@ -162,3 +162,10 @@ screen.getAllByRole('listitem').map(elem => elem.textContent)
 ```js
 expect("something").toEqual("something")
 ```
+
+## 非同期テスト
+
+```findByText```で非同期でテストを実行する(4秒ほど待ってくれる。それ以上はtimeout)
+```js
+expect(await screen.findByText("something"))
+```
