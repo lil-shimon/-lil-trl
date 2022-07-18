@@ -56,6 +56,18 @@ screen.getByRole("role name") // single
 screen.getAllByRole("role name") // multiple
 ```
 
+特定の文字列があるかをテスト
+```js
+expect("something").toHaveTextContent("check text")
+```
+
+特定の属性かチェックするテスト
+```js
+expect(element).toHaveAttribute("attribute name")
+// e.g.
+expect("button").toHaveAttribute("disabled")
+```
+
 Headerを取得・デバック
 
 ```js
@@ -168,4 +180,50 @@ expect("something").toEqual("something")
 ```findByText```で非同期でテストを実行する(4秒ほど待ってくれる。それ以上はtimeout)
 ```js
 expect(await screen.findByText("something"))
+```
+
+## APIテスト
+```mock server worker```ライブラリを使う
+
+setup server
+```js
+import { setupServer } from "msw/node";
+import { rest } from "msw";
+
+const server = setupServer(
+    rest.get("https://jsonplaceholder.typicode.com/users/1", (req, res, ctx) => {
+        // statement here
+    })
+)
+```
+
+in case status 200
+```js
+const server = setupServer(
+    rest.get("https://jsonplaceholder.typicode.com/users/1", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json({username: "John"}))
+    })
+)
+```
+
+launch server before test
+```js
+beforeAll(() => server.listen())
+```
+
+reset after each test
+```js
+afterEach(() => server.resetHandlers())
+```
+
+after all test, close server
+```js
+afterAll(() => server.close())
+```
+
+modify server response (available on that scope only)
+```js
+server.use(
+    // statement here
+)
 ```

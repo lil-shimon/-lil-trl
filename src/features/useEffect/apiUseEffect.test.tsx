@@ -4,7 +4,7 @@ import { ApiUseEffectComponent } from "./apiUseEffect";
 
 describe("useEffect rendering", () => {
     it("should render null when rendering", () => {
-        const {container} = render(<ApiUseEffectComponent/>)
+        const { container } = render(<ApiUseEffectComponent/>)
         expect(container.firstChild).toBeNull()
     })
 
