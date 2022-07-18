@@ -81,6 +81,12 @@ expect(screen.getByRole("heading")).toBeTruthy()
 screen.getByText("text");
 ```
 
+HTMLの中に特定のTextがあるかをテスト
+
+```js
+expect(screen.getByText("text")).toBeInTheDocument()
+```
+
 特定のテキストがないかをテキスト
 ```queryByText```を使うことでテキストがないかを判定できる Nullを返す
 ```js
@@ -139,4 +145,20 @@ expect("function").not.toHaveBeenCalled()
 1回関数が呼ばれているかをチェック
 ```js
 expect("fucntion").toHaveBeenCalledTimes(1)
+```
+
+## Listテスト
+```Role```は```listitem```
+```js
+screen.getAllByRole('listitem')
+```
+
+List要素のテキスト部分のみを抽出
+```js
+screen.getAllByRole('listitem').map(elem => elem.textContent)
+```
+
+要素が一致しているかをテスト
+```js
+expect("something").toEqual("something")
 ```

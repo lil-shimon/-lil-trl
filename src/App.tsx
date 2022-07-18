@@ -3,14 +3,23 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
 import { UserEventComponent } from "./features/user-event/userEvent";
+import { ListComponent } from "./features/list/list";
 
 function App() {
+
+  const data = [
+    { id: 1, item: "react", },
+    { id: 2, item: "typescript" },
+    { id: 3, item: 'rust' }
+  ]
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <UserEventComponent />
+        <ListComponent data={data} />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
