@@ -1,9 +1,9 @@
-import reducer, { increment, incrementByAmount } from "./customCounterSlice";
+import reducer, { increment, incrementByAmount, MODE_TYPE } from "./customCounterSlice";
 
 describe("Reducer of Redux toolkit", () => {
     describe("increment action", () => {
         let initialState = {
-            mode: 0,
+            mode: MODE_TYPE.NORMAL,
             value: 1,
             username: ""
         }
@@ -14,7 +14,7 @@ describe("Reducer of Redux toolkit", () => {
         })
         it("should increment by 100 with mode 1", () => {
             let initialState = {
-                mode: 1,
+                mode: MODE_TYPE.HUNDRED,
                 value: 1,
                 username: ""
             }
@@ -24,7 +24,7 @@ describe("Reducer of Redux toolkit", () => {
         })
         it("should increment by 10000 with mode 2", () => {
             let initialState = {
-                mode: 2,
+                mode: MODE_TYPE.TEN_THOUSAND,
                 value: 1,
                 username: ""
             }
@@ -36,7 +36,7 @@ describe("Reducer of Redux toolkit", () => {
 
     describe("increment by amount action", () => {
         let initialState = {
-            mode: 0,
+            mode: MODE_TYPE.NORMAL,
             value: 1,
             username: ""
         }
@@ -47,7 +47,7 @@ describe("Reducer of Redux toolkit", () => {
         })
         it("should increment by 100 * payload value with mode 1", () => {
             let initialState = {
-                mode: 1,
+                mode: MODE_TYPE.HUNDRED,
                 value: 1,
                 username: ""
             }
@@ -57,7 +57,7 @@ describe("Reducer of Redux toolkit", () => {
         })
         it("should increment by 10000 * payload value with mode 0", () => {
             let initialState = {
-                mode: 2,
+                mode: MODE_TYPE.TEN_THOUSAND,
                 value: 1,
                 username: ""
             }
