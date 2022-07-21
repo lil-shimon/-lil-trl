@@ -271,3 +271,14 @@ payload case
 ```js
 const action = { type: "an action".type, payload: 3 }
 ```
+
+## Extra reducer test
+success case
+```js
+const action = {type: "extra reducer".fulfilled.type, payload: 3 }
+```
+
+failed case
+```js
+const action = {type: "extra reducer".rejected.type, payload: 3 }
+```
