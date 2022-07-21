@@ -1,4 +1,5 @@
 # lil-rtl
+
 React TDD勉強用
 
 ## テスト準備
@@ -51,17 +52,20 @@ screen.debug()
 ```
 
 特定の要素があるかをテスト
+
 ```js
 screen.getByRole("role name") // single
 screen.getAllByRole("role name") // multiple
 ```
 
 特定の文字列があるかをテスト
+
 ```js
 expect("something").toHaveTextContent("check text")
 ```
 
 特定の属性かチェックするテスト
+
 ```js
 expect(element).toHaveAttribute("attribute name")
 // e.g.
@@ -89,6 +93,7 @@ expect(screen.getByRole("heading")).toBeTruthy()
 ```
 
 特定のTextがあるかをテスト
+
 ```js
 screen.getByText("text");
 ```
@@ -101,6 +106,7 @@ expect(screen.getByText("text")).toBeInTheDocument()
 
 特定のテキストがないかをテキスト
 ```queryByText```を使うことでテキストがないかを判定できる Nullを返す
+
 ```js
 expect(screen.queryByText("none")).toBeNull()
 ```
@@ -119,58 +125,71 @@ expect(screen.getByTestId("react")).toBeTruthy();
 ```
 
 ```placeholder```でも特定できる
+
 ```js
 expect(screen.getByPlaceholderText("placeholder")).toBeTruthy();
 ```
 
 ## UserEvent テスト
+
 ```
 src/features/user-event/user-event.test.tsx
 ```
 
 テスト間副作用をなくすために、cleanupをする
+
 ```js
 afterEach(() => cleanup())
 ```
 
-Typingをさせる 
+Typingをさせる
+
 ```js
 import userEvent from "@testing-library/user-event";
+
 await userEvent.type(elem, "text")
 ```
 
 mock関数
+
 ```js
 const mockFunc = jest.fn();
 ```
 
 関数が呼ばれているかをチェック
+
 ```js
 expect("function").toHaveBeenCalled()
 ```
 
 関数が呼ばれていないかをチェック
+
 ```js
 expect("function").not.toHaveBeenCalled()
 ```
 
 1回関数が呼ばれているかをチェック
+
 ```js
 expect("fucntion").toHaveBeenCalledTimes(1)
 ```
 
 ## Listテスト
+
 ```Role```は```listitem```
+
 ```js
 screen.getAllByRole('listitem')
 ```
 
 List要素のテキスト部分のみを抽出
+
 ```js
 screen.getAllByRole('listitem').map(elem => elem.textContent)
 ```
 
 要素が一致しているかをテスト
+
 ```js
 expect("something").toEqual("something")
 ```
@@ -178,14 +197,17 @@ expect("something").toEqual("something")
 ## 非同期テスト
 
 ```findByText```で非同期でテストを実行する(4秒ほど待ってくれる。それ以上はtimeout)
+
 ```js
 expect(await screen.findByText("something"))
 ```
 
 ## APIテスト
+
 ```mock server worker```ライブラリを使う
 
 setup server
+
 ```js
 import { setupServer } from "msw/node";
 import { rest } from "msw";
@@ -198,6 +220,7 @@ const server = setupServer(
 ```
 
 in case status 200
+
 ```js
 const server = setupServer(
     rest.get("https://jsonplaceholder.typicode.com/users/1", (req, res, ctx) => {
@@ -207,23 +230,44 @@ const server = setupServer(
 ```
 
 launch server before test
+
 ```js
 beforeAll(() => server.listen())
 ```
 
 reset after each test
+
 ```js
 afterEach(() => server.resetHandlers())
 ```
 
 after all test, close server
+
 ```js
 afterAll(() => server.close())
 ```
 
 modify server response (available on that scope only)
+
 ```js
 server.use(
     // statement here
 )
+```
+
+## Redux test
+
+initial state, action, stateを定義し、出力値が正しいかを判定する
+
+```js
+import reducer, {someActions} from "./some slice";
+
+const action = {type: "an action".type}
+const state = reducer(initialState, action)
+expect(state.value).toEqual(2)
+```
+
+payload case
+```js
+const action = { type: "an action".type, payload: 3 }
 ```
