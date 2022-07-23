@@ -90,5 +90,5 @@ export const customCounterSlice = createSlice({
 export const { increment, decrement, incrementByAmount } = customCounterSlice.actions;
 export default customCounterSlice.reducer;
 
-export const customCounterState = (state: RootState) => state.customCounter;
+export const customCounterState = (state: RootState) => state.customCounter.value;
 export const usernameState = (state: RootState) => state.customCounter.username;

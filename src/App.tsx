@@ -4,6 +4,7 @@ import { Counter } from './features/counter/Counter';
 import './App.css';
 import { UserEventComponent } from "./features/user-event/userEvent";
 import { ListComponent } from "./features/list/list";
+import { ReduxComponent } from "./features/reduxReact/Redux";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Counter />
         <UserEventComponent />
         <ListComponent data={data} />
+        <ReduxComponent />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
